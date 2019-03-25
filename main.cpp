@@ -208,6 +208,10 @@ std::deque<studentas> loadStudents(std::deque<studentas> users) {
     try {
         std::ifstream inf("kursiokai.txt");
 
+        if (inf.fail() || inf.bad() || !inf.is_open()) {
+            throw std::runtime_error("Can not load file.");
+        }
+
         bool start = true;
         std::string entry;
         int ndcount = 0, tempnd = 0;
